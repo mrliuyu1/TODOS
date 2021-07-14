@@ -88,7 +88,7 @@ function delOne() {
             url: "http://127.0.0.1:5000/delTodos",
             type : "post",
             data: {
-              "ids" : _id
+              "ids" : `["${_id}"]`
             }
           })
          /*  e.target.parentNode.remove()
@@ -99,7 +99,6 @@ function delOne() {
         }
         if(e.target.tagName === 'INPUT'){
           const _id = e.target.parentNode.parentNode.getAttribute('id')
-          
             const status = e.target.checked
           const result = await myAjax({
             url: "http://127.0.0.1:5000/updateOnetodos" ,

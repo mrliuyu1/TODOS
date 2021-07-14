@@ -15,7 +15,7 @@ function myAjax(obj){
         }
         
         xhr.send(data)
-    
+        
         xhr.onreadystatechange = function () {
     
             if(xhr.readyState === 4 ){

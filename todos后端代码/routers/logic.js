@@ -43,10 +43,10 @@ router.post('/updateAlltodos', async (req, res) => {
  router.post('/delTodos', async (req,res) =>{
        
         let { ids } = req.body
-        // ids = JSON.parse(ids)
-        const arr = ids.split(',')
+        ids = JSON.parse(ids)
+       //  const arr = ids.split(',')
        
-        await delTodos(arr)
+        await delTodos(ids)
         const result = await findTodos()
         res.send(result)
 
