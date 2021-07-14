@@ -1,6 +1,6 @@
 const express = require('express');
 
-const {findTodos,addTodos,updateOnetodos,updateAlltodos,delAlltodos,delTodos} = require('../dbs/cruds')
+const {findTodos,addTodos,updateOnetodos,updateAlltodos,delAlltodos} = require('../dbs/cruds')
 const router = express.Router();
 const model = require('../dbs/model')
 
@@ -40,22 +40,22 @@ router.post('/updateAlltodos', async (req, res) => {
 
  })
 
- router.post('/delTodos', async (req,res) =>{
+ router.post('/delAlltodos', async (req,res) =>{
        
         let { ids } = req.body
         ids = JSON.parse(ids)
        //  const arr = ids.split(',')
-       
-        await delTodos(ids)
+       console.log(ids);
+        await delAlltodos(ids)
         const result = await findTodos()
         res.send(result)
 
  })
- router.get('/delAlltodos', async (req,res) =>{
+/*  router.get('/delAlltodos', async (req,res) =>{
      
         await delAlltodos()
         const result = await findTodos()
         res.send(result)
 
- })
+ }) */
 module.exports = router

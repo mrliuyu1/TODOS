@@ -4,6 +4,7 @@ function myAjax(obj){
     if(!url) return
     return new Promise((resolve,reject) =>{
         const xhr = new XMLHttpRequest()
+        
         data = data && str(data)
         if(type === 'get'){
             url += `?${data}`

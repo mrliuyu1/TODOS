@@ -82,13 +82,14 @@ function delOne() {
     main.onclick = async function(e){
       
         if(e.target.tagName === 'BUTTON'){
-            const _id = e.target.parentNode.getAttribute('id')
-            
+            let value =ids = e.target.parentNode.getAttribute('id')
+            ids  = JSON.stringify([ids])
+            console.log(ids);
          const result = await myAjax({
-            url: "http://127.0.0.1:5000/delTodos",
+            url: "http://127.0.0.1:5000/delAlltodos",
             type : "post",
             data: {
-              "ids" : `["${_id}"]`
+              ids
             }
           })
          /*  e.target.parentNode.remove()
@@ -147,10 +148,18 @@ function delChecked() {
 
   const btn = document.querySelector('.btn')
   btn.onclick = async function () {
-    
+    let  lis =  document.querySelectorAll('.todo-main input[checked]')
+    let ids =  Array.from(lis).map(function(item){
+
+          return item.parentNode.parentNode.getAttribute('id')
+    })
+    ids = JSON.stringify(ids)
     const result = await myAjax({
       url: "http://127.0.0.1:5000/delAlltodos",
-      type : 'get' ,
+      type : 'post' ,
+      data : {
+        ids
+      }
       
     }) 
    callback(result)

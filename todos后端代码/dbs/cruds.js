@@ -17,13 +17,13 @@ function updateAlltodos(isDone){
     return model.updateMany({},{isDone})
 }
 
-function delTodos(ids){
+function delAlltodos(ids){
     return model.deleteMany({_id : {$in: ids}})
 
 }
-function delAlltodos() {
+/* function delAlltodos() {
      return model.deleteMany({isDone: true})
-}
+} */
 module.exports = {
-    findTodos, addTodos,updateOnetodos,updateAlltodos,delAlltodos,delTodos
+    findTodos, addTodos,updateOnetodos,updateAlltodos,delAlltodos,
 }
